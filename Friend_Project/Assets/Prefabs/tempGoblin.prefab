@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212253777319929588}
   - component: {fileID: 61927555505602238}
   - component: {fileID: 114174759798124572}
+  - component: {fileID: 114741246807359604}
   m_Layer: 0
   m_Name: tempGoblin
   m_TagString: Untagged
@@ -79,6 +80,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+--- !u!114 &114741246807359604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263093108586526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49dfeadd5220074f9c894fb932d137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  normal: 0
+  alerted: 0
+  detected: 0
 --- !u!212 &212253777319929588
 SpriteRenderer:
   m_ObjectHideFlags: 1

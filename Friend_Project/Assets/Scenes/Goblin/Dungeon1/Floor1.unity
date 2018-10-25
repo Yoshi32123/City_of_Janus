@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114916266824433894, guid: f1bf5edae202fd24fab925fd785437c5,
+        type: 2}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1bf5edae202fd24fab925fd785437c5, type: 2}
   m_IsPrefabAsset: 0
@@ -1145,6 +1150,16 @@ Prefab:
     - target: {fileID: 1263093108586526, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_Name
       value: tempGreeter
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741246807359604, guid: 27aee6031bd9d424c9f816c7342c83a3,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1571925883}
+    - target: {fileID: 114741246807359604, guid: 27aee6031bd9d424c9f816c7342c83a3,
+        type: 2}
+      propertyPath: detectionSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
