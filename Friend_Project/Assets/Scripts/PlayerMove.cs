@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour {
     private Vector3 direction;
     private Vector3 velocity;
     [SerializeField]
-    private float speed; //defualt is 5
+    private float speed; //default is 5
 
 	// Use this for initialization
 	void Start () {
