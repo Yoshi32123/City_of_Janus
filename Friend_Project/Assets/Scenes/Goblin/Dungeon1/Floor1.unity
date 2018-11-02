@@ -459,7 +459,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 278976554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.450001, y: -12.23, z: -10}
+  m_LocalPosition: {x: -15.45, y: -12.23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2088276003}
@@ -1716,7 +1716,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089501718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.450001, y: -12.23, z: -10}
+  m_LocalPosition: {x: -15.45, y: -12.23, z: -10}
   m_LocalScale: {x: 1.026349, y: 1.026349, z: 1.026349}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2437,8 +2437,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1326771339144414, guid: 40dee8d21dbf8d54f9a0e73a2e7db2f5, type: 2}
+  bulletPrefab: {fileID: 1617312671703276, guid: 0d561f7f967cdf84d989007a093b7843,
+    type: 2}
+  numberOfBullets: 6
   angle: 0
-  increment: 2
+  bullets: []
 --- !u!4 &1571925885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4070110424118166, guid: f1bf5edae202fd24fab925fd785437c5,

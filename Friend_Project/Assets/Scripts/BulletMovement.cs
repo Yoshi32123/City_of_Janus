@@ -2,25 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour {
+public class BulletMovement : MonoBehaviour {
 
-    private Vector3 direction;
-    private Vector3 velocity;
-    [SerializeField]
-    private float speed; //default is 5
+    public Vector3 direction;
+    public float speed;
+    public Vector3 velocity;
 
-    public Vector3 Direction
-    {
-        get { return direction; }
-        set { direction = value; }
-    }
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         Move();
 	}
 
