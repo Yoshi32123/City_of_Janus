@@ -34,18 +34,8 @@ public class EnemyMovement : MonoBehaviour {
         distToPlayer = (Mathf.Pow((player.transform.position.x - transform.position.x), 2) + Mathf.Pow((player.transform.position.y - transform.position.y), 2));
         //detected = PlayerInSight();
 
-        detected = PlayerDetected();
-        if (detected)
-        {
-            normal = false;
-            alerted = false;
-        }
-        else if (!alerted)
-        {
-            normal = true;
-            alerted = false;
-            detected = false;
-        }
+        PlayerDetected();
+
 
     }
 
@@ -68,7 +58,7 @@ public class EnemyMovement : MonoBehaviour {
     /// this is just for testing eventually more factors will determine detection chance and way that the player is detected maybe changed
     /// </summary>
     /// <returns></returns>
-    private bool PlayerDetected()
+    private void PlayerDetected()
     {
         PlayerInSight();
 
@@ -81,7 +71,7 @@ public class EnemyMovement : MonoBehaviour {
             detectionChance = 0;
         }
 
-        if (distToPlayer <= 16) //greater than 4^2 cause distance to player is never square rooted
+        if (distToPlayer <= Mathf.Pow(4f, 2f)) //greater than 4^2 cause distance to player is never square rooted
         {
             detectionChance += detectionSpeed * Time.deltaTime;
         }
@@ -92,11 +82,16 @@ public class EnemyMovement : MonoBehaviour {
 
         if (detectionChance >= .75f)
         {
-            return true;
+
+            normal = false;
+            alerted = false;
+            detected = true;
         }
         else
         {
-            return false;
+            normal = true;
+            alerted = false;
+            detected = false;
         }
     }
 }
