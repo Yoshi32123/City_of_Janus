@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             if (enemies[i].GetComponent<Collider2D>().OverlapPoint(transform.position))
             {
-                enemies[i].GetComponent<EnemyData>().health -= damage;
+                enemies[i].GetComponent<EnemyData>().Health -= damage;
 
             }
             

@@ -29,7 +29,7 @@ public class SceneController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+        CheckEnemyDeath();
 	}
 
     public void RespawnPlayer()
@@ -40,5 +40,18 @@ public class SceneController : MonoBehaviour {
     public void RestartLevel()
     {
 
+    }
+
+    public void CheckEnemyDeath()
+    {
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].GetComponent<EnemyData>().Health <= 0)
+            {
+                Destroy(enemies[i]);
+                enemies.RemoveAt(i);
+                i--;
+            }
+        }
     }
 }
