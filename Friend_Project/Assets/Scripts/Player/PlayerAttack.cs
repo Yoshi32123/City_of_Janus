@@ -5,31 +5,28 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour {
 
     [SerializeField]
-    private GameObject manager;
-    private List<GameObject> enemyList;
+    private GameObject sceneController;
+    private List<GameObject> enemies;
     [SerializeField]
     private int damage;
 
 	// Use this for initialization
 	void Start () {
-        enemyList = manager.GetComponent<EnemyManager>().enemyList;
+        enemies = sceneController.GetComponent<SceneController>().Enemies;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        attack();
+        GenericAttack();
 	}
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public void attack()
+    public void GenericAttack()
     {
-        for(int i = 0; i < enemyList.Count; i++)
+        for(int i = 0; i < enemies.Count; i++)
         {
-            if (enemyList[i].GetComponent<Collider2D>().OverlapPoint(transform.position))
+            if (enemies[i].GetComponent<Collider2D>().OverlapPoint(transform.position))
             {
-                enemyList[i].GetComponent<EnemyData>().health -= damage;
+                enemies[i].GetComponent<EnemyData>().health -= damage;
 
             }
             
@@ -38,6 +35,16 @@ public class PlayerAttack : MonoBehaviour {
             //}
            
         }
+    }
+
+    public void SneakAttack()
+    {
+        
+    }
+
+    public void GunAttack()
+    {
+        gameObject.GetComponent<Gun>().FireGun();
     }
 
     bool CollisionDetection(Rect enemyRect)

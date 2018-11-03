@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData : MonoBehaviour {
-
-    public int health;
-
+public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
