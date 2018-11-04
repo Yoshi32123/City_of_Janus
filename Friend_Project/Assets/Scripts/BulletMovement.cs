@@ -2,11 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Moves the bullets after they are fired
+/// 
+/// Author: Trenton Plager
+/// </summary>
 public class BulletMovement : MonoBehaviour {
 
-    public Vector3 direction;
-    public float speed;
-    public Vector3 velocity;
+    private Vector3 direction;
+    [SerializeField]
+    private float speed;
+    private Vector3 velocity;
+
+    public Vector3 Direction
+    {
+        set { direction = value; }
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -21,29 +32,10 @@ public class BulletMovement : MonoBehaviour {
 	}
 
     /// <summary>
-    /// moves object based on keyboard inputs 
+    /// Moves the bullet in the direction it was given with a constant speed
     /// </summary>
     void Move()
     {
-        direction = new Vector3(0, 0);
-        if (Input.GetKey(KeyCode.W))
-        {
-            direction.y = speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            direction.y = -speed;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction.x = speed;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction.x = -speed;
-        }
-        velocity = direction.normalized * speed;
-
-        transform.position += velocity * Time.deltaTime;
+        transform.position += direction * speed;
     }
 }

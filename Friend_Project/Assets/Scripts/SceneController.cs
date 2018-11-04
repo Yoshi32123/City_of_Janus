@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour {
     private int enemyNumber;
     private List<Vector3> enemyPositions;
     private List<GameObject> enemies;
+    [SerializeField]
     private GameObject player;
     private Vector3 playerStartPos;
 
@@ -23,13 +24,13 @@ public class SceneController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		
+        enemies = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        CheckEnemyDeath();
+        //CheckEnemyDeath();
 	}
 
     public void RespawnPlayer()

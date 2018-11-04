@@ -2,37 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the functionality of the gun 
+/// i.e. finds gun position and updates this position
+/// Also fires the gun
+/// 
+/// Author: Trenton Plager
+/// </summary>
 public class Gun : MonoBehaviour {
 
-    public GameObject gun;
-    public GameObject bulletPrefab;
-    public int numberOfBullets;
-    public float angle;
-    public List<GameObject> bullets; 
+    [SerializeField]
+    private GameObject gun;
+    [SerializeField]
+    private GameObject bulletPrefab;
+    private int numberOfBullets;
+    private float angle;
+    private List<GameObject> bullets; 
 
 	// Use this for initialization
 	void Start ()
     {
         gun = Instantiate(gun,
             new Vector3(transform.position.x, transform.position.y, transform.position.z), 
-            findGunPosition());
+            FindGunPosition());
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         gun.transform.position = transform.position;
-        gun.transform.rotation = findGunPosition();
+        gun.transform.rotation = FindGunPosition();
         FireGun();
 	}
 
-    public Quaternion findGunPosition()
+    /// <summary>
+    /// Finds the gun's position using the camera and the mouse position
+    /// </summary>
+    /// <returns>A rotation Quaternion to apply to the gun</returns>
+    public Quaternion FindGunPosition()
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mouseWorldPos);
 
         Vector3 mousePosRelPlayer = new Vector3(transform.position.x - mouseWorldPos.x, transform.position.y - mouseWorldPos.y, 0);
-        Debug.Log(mousePosRelPlayer);
 
         angle = Mathf.Atan2(mousePosRelPlayer.y, mousePosRelPlayer.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0f, 0f, (angle - 90f) + 180f);
@@ -47,7 +58,7 @@ public class Gun : MonoBehaviour {
             if(numberOfBullets != 0)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                newBullet.GetComponent<BulletMovement>().direction = gameObject.GetComponent<PlayerMove>().Direction;
+                newBullet.GetComponent<BulletMovement>().Direction = gameObject.GetComponent<PlayerMove>().Direction;
                 numberOfBullets--;
             }
         }
