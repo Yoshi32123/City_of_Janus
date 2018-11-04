@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
+    /////////////////// Authors //////////////////////
+    // Freddy Stock
+
+
     //fields related to detection chance
     private float distToPlayer;
     public float detectionChance;
@@ -40,7 +44,8 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Helper method to player Detected will instantly detect player if in line of sight
+    /// CURRENT NOT FINISHED TEMP SOLUTION IMPLEMENTED
     /// </summary>
     /// <returns></returns>
     private void PlayerInSight()
