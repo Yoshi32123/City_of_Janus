@@ -17,7 +17,15 @@ public class Gun : MonoBehaviour {
     private GameObject bulletPrefab;
     private int numberOfBullets;
     private float angle;
-    private List<GameObject> bullets; 
+    private List<GameObject> bullets;
+    [SerializeField]
+    private int damage;
+
+    public int Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -32,7 +40,6 @@ public class Gun : MonoBehaviour {
     {
         gun.transform.position = transform.position;
         gun.transform.rotation = FindGunPosition();
-        FireGun();
 	}
 
     /// <summary>
@@ -51,7 +58,7 @@ public class Gun : MonoBehaviour {
         return rotation;
     }
 
-    public void FireGun()
+    public void FireGun(GameObject target)
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -60,6 +67,8 @@ public class Gun : MonoBehaviour {
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 newBullet.GetComponent<BulletMovement>().Direction = gameObject.GetComponent<PlayerMove>().Direction;
                 numberOfBullets--;
+
+                target.GetComponent<Data>().Health -= damage;
             }
         }
     }
