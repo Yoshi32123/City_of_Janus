@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour {
+public class PlayerData : Data {
 
-    private float health;
     private Tree upgrades;
     private List<HotbarItems> hotbar; 
 

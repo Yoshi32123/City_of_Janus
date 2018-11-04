@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData : MonoBehaviour {
+public class EnemyData : Data {
 
-    private int health;
     private EnemyType type;
 
-    public int Health
-    {
-        get { return health; }
-        set { health = value; }
-    }
-
+    
     public EnemyType Type
     {
         get { return type; }

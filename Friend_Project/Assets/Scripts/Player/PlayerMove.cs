@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
+    ///////////////////// Authors ///////////////////
+    //Freddy Stock
+
     private Vector3 direction;
     private Vector3 velocity;
     [SerializeField]
