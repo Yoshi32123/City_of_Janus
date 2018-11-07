@@ -65,7 +65,7 @@ public class Gun : MonoBehaviour {
             if(numberOfBullets != 0)
             {
                 GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                newBullet.GetComponent<BulletMovement>().Direction = gameObject.GetComponent<PlayerMove>().Direction;
+                newBullet.GetComponent<BulletMovement>().Direction = gameObject.GetComponent<PlayerMove>().direction;
                 numberOfBullets--;
 
                 target.GetComponent<Data>().Health -= damage;

@@ -220,10 +220,15 @@ Prefab:
     - target: {fileID: 114916266824433894, guid: f1bf5edae202fd24fab925fd785437c5,
         type: 2}
       propertyPath: speed
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1246415003978744, guid: f1bf5edae202fd24fab925fd785437c5, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114916266824433894, guid: f1bf5edae202fd24fab925fd785437c5,
+        type: 2}
+      propertyPath: mass
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2446,6 +2451,7 @@ MonoBehaviour:
   gun: {fileID: 1326771339144414, guid: 40dee8d21dbf8d54f9a0e73a2e7db2f5, type: 2}
   bulletPrefab: {fileID: 1617312671703276, guid: 0d561f7f967cdf84d989007a093b7843,
     type: 2}
+  damage: 0
 --- !u!4 &1571925885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4070110424118166, guid: f1bf5edae202fd24fab925fd785437c5,
