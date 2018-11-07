@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour {
 
     /////////////////// Authors //////////////////////
     // Freddy Stock
+    // https://www.youtube.com/watch?v=fKWTpi70a_E was used as a refrence for the Patrol() method
 
     [SerializeField]
     private float speed;
