@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61927555505602238}
   - component: {fileID: 114174759798124572}
   - component: {fileID: 114131885047362890}
+  - component: {fileID: 50907246033481248}
   m_Layer: 0
   m_Name: tempGoblin
   m_TagString: Untagged
@@ -37,12 +38,32 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263093108586526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.282469, y: -5.792535, z: 0.3107577}
+  m_LocalPosition: {x: 21.03, y: -1.8825347, z: 0.3107577}
   m_LocalScale: {x: 0.21595035, y: 0.21595035, z: 0.21595035}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50907246033481248
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263093108586526}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &61927555505602238
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -55,7 +76,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.22440791, y: -0.22440338}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -66,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 5.3997006, y: 7.531555}
   m_EdgeRadius: 0
 --- !u!114 &114131885047362890
 MonoBehaviour:
@@ -79,6 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9a7cae673fbcd48914580182e92a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  maxSpeed: 2
+  targetPosition: {x: 0, y: 0, z: 0}
+  mass: 1
+  direction: {x: 1, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  patrolPath:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   detectionChance: 0
   player: {fileID: 0}
   detectionSpeed: 0.1
