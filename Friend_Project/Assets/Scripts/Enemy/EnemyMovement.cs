@@ -7,6 +7,18 @@ public class EnemyMovement : MonoBehaviour {
     /////////////////// Authors //////////////////////
     // Freddy Stock
 
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float maxSpeed;
+
+    public float mass;
+    public Vector3 direction = new Vector3(1, 0, 0);        // Right, 0 degrees
+    public Vector3 velocity = new Vector3(0, 0, 0);
+    public Vector3 acceleration = new Vector3(0, 0, 0);
+
+    public Transform[] patrolPath;
+    private int currentPatrolNode;
 
     //fields related to detection chance
     private float distToPlayer;
@@ -28,12 +40,16 @@ public class EnemyMovement : MonoBehaviour {
         normal = true;
         alerted = false;
         detected = false;
+
+        currentPatrolNode = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        Patrol();
+        Move();
 
         distToPlayer = (Mathf.Pow((player.transform.position.x - transform.position.x), 2) + Mathf.Pow((player.transform.position.y - transform.position.y), 2));
         //detected = PlayerInSight();
@@ -98,5 +114,52 @@ public class EnemyMovement : MonoBehaviour {
             alerted = false;
             detected = false;
         }
+    }
+
+    /// <summary>
+    /// follows a set patrol path
+    /// moves towards next location and when it gets close to it moves the the next location
+    /// </summary>
+    private void Patrol()
+    {
+        if(Vector3.Distance(transform.position, patrolPath[currentPatrolNode].position) > .5f) //range because otherwise the character may over shoot
+        {
+            ApplyForce(patrolPath[currentPatrolNode].position - transform.position);
+        }
+        else
+        {
+            
+            if (currentPatrolNode == patrolPath.Length - 1)
+            {
+                currentPatrolNode = 0;
+            }
+            else
+            {
+                currentPatrolNode++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// applies a force to an object based on its mass
+    /// </summary>
+    /// <param name="force">force to apply</param>
+    private void ApplyForce(Vector3 force)
+    {
+        acceleration += force / mass;
+    }
+
+    /// <summary>
+    /// move object based on forces
+    /// </summary>
+    private void Move()
+    {
+        velocity += acceleration;
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+
+        transform.position += velocity * Time.deltaTime;
+
+        direction = velocity.normalized;
+        acceleration = Vector3.zero;
     }
 }
