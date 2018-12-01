@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263093108586526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.03, y: -1.8825347, z: 0.3107577}
+  m_LocalPosition: {x: 12.882469, y: 10.617465, z: 0.3107577}
   m_LocalScale: {x: 0.21595035, y: 0.21595035, z: 0.21595035}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   detectionChance: 0
+  detectionRadius: 5
   player: {fileID: 0}
   detectionSpeed: 0.1
   normal: 0

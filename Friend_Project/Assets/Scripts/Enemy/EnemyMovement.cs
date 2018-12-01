@@ -28,6 +28,8 @@ public class EnemyMovement : MonoBehaviour {
     //fields related to detection chance
     private float distToPlayer;
     public float detectionChance;
+    [SerializeField]
+    private float detectionRadius;
 
     [SerializeField]
     private GameObject player;
@@ -39,12 +41,24 @@ public class EnemyMovement : MonoBehaviour {
     public bool alerted;
     public bool detected;
 
+    //matrix used for vetor rotations
+    private float[,] rotationMatrix;
+
+    private Vector3 detectVectorLeft;
+    private Vector3 detectVectorRight;
+    private Vector3 centerDetectionCone;
+
     // Use this for initialization
     void Start()
     {
         normal = true;
         alerted = false;
         detected = false;
+
+        detectVectorLeft = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        detectVectorRight = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        centerDetectionCone = transform.position + transform.forward;
+
 
         currentPatrolNode = 0;
     }
@@ -68,6 +82,8 @@ public class EnemyMovement : MonoBehaviour {
 
         PlayerDetected();
 
+        
+
 
     }
 
@@ -78,12 +94,50 @@ public class EnemyMovement : MonoBehaviour {
     /// <returns></returns>
     private void PlayerInSight()
     {
+        //debug lines of the detection cone
+        //Debug.DrawLine(transform.position, new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius)); 
+        //Debug.DrawLine(transform.position, new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius));
 
 
-        if (distToPlayer <= 4)
+        Vector3 playerEnSpace = player.transform.position - transform.position;//convert the player's coordinates to this objects coordinates
+
+        //detection vectors left and right are based on when the y value of both vectors is positive
+        //Vector3 detectVectorLeft = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        //Vector3 detectVectorRight = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+
+
+
+        //rotate the detection vectors based on the direction of movement
+
+
+        //centerDetectionCone = direction;
+        //Vector3 detectVectorLeft = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        //
+        //else
+        //{
+        //    Debug.Log("here");
+        //}
+
+        detectVectorLeft = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        detectVectorRight = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        //centerDetectionCone = transform.position + tran;
+
+
+
+        Debug.DrawLine(transform.position,  detectVectorLeft);
+        Debug.DrawLine(transform.position,  detectVectorRight);
+        Debug.DrawLine(transform.position,  centerDetectionCone);
+
+
+
+        if (playerEnSpace.y > 0 && // if the player is withing a 60 degree cone infront of the enemy they are detected
+            Mathf.Atan2(playerEnSpace.y, playerEnSpace.x) * Mathf.Rad2Deg > 60 &&
+            Mathf.Atan2(playerEnSpace.y, playerEnSpace.x) * Mathf.Rad2Deg < 120 &&
+            playerEnSpace.sqrMagnitude < Mathf.Pow(detectionRadius, 2))
         {
             detectionChance = 1;
         }
+
     }
 
     /// <summary>
@@ -136,7 +190,18 @@ public class EnemyMovement : MonoBehaviour {
     {
         if(Vector3.Distance(transform.position, patrolPath[currentPatrolNode].position) > .5f) //range because otherwise the character may over shoot
         {
-            ApplyForce(new Vector3(patrolPath[currentPatrolNode].position.x - transform.position.x, patrolPath[currentPatrolNode].position.y - transform.position.y, 0));
+            Vector3 directionToPoint = new Vector3(patrolPath[currentPatrolNode].position.x - transform.position.x, patrolPath[currentPatrolNode].position.y - transform.position.y, 0);
+
+            ApplyForce(directionToPoint);
+
+            float rotDegree = Mathf.Atan2(directionToPoint.y, directionToPoint.x);
+
+            rotDegree = rotDegree / 100;
+
+            centerDetectionCone = Rotate(rotDegree, centerDetectionCone);
+
+            Debug.Log(centerDetectionCone);
+            
         }
         else
         {
@@ -191,7 +256,11 @@ public class EnemyMovement : MonoBehaviour {
         return seekingForce;
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="targetPosition"></param>
+    /// <returns></returns>
     protected Vector3 Flee(Vector3 targetPosition)
     {
         desiredVelocity = -new Vector3(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y, 0);
@@ -203,4 +272,29 @@ public class EnemyMovement : MonoBehaviour {
         return seekingForce;
     }
 
+
+    /// <summary>
+    /// rotates a given Vector
+    /// </summary>
+    /// <param name="radians">rotation in radians</param>
+    /// <param name="vector">vector to be rotated</param>
+    /// <returns>rotated vector</returns>
+    private Vector3 Rotate(float radians, Vector3 vector)
+    {
+
+        Vector3 rotatedVector = new Vector3();
+
+        rotationMatrix = new float[2, 2];
+        rotationMatrix[0, 0] = Mathf.Cos(radians);
+        rotationMatrix[0, 1] = -Mathf.Sin(radians);
+        rotationMatrix[1, 0] = Mathf.Sin(radians);
+        rotationMatrix[1, 1] = Mathf.Cos(radians);
+
+        //matrix multiplication
+        rotatedVector.x = (rotationMatrix[0, 0] * vector.x) +(rotationMatrix[0, 1] * vector.y) ;
+        rotatedVector.y = (rotationMatrix[1, 0] * vector.x) + (rotationMatrix[1, 1] * vector.y);
+
+
+        return rotatedVector;
+    }
 }
