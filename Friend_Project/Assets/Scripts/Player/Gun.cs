@@ -33,6 +33,8 @@ public class Gun : MonoBehaviour {
         gun = Instantiate(gun,
             new Vector3(transform.position.x, transform.position.y, transform.position.z), 
             FindGunPosition());
+
+        numberOfBullets = 6;
     }
 	
 	// Update is called once per frame
@@ -40,6 +42,8 @@ public class Gun : MonoBehaviour {
     {
         gun.transform.position = transform.position;
         gun.transform.rotation = FindGunPosition();
+
+        FireGun();
 	}
 
     /// <summary>
@@ -58,17 +62,20 @@ public class Gun : MonoBehaviour {
         return rotation;
     }
 
-    public void FireGun(GameObject target)
+    public void FireGun()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if(numberOfBullets != 0)
             {
-                GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                newBullet.GetComponent<BulletMovement>().Direction = gameObject.GetComponent<PlayerMove>().direction;
-                numberOfBullets--;
+                Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                target.GetComponent<Data>().Health -= damage;
+                Vector3 mousePosRelPlayer = new Vector3(mouseWorldPos.x - transform.position.x, mouseWorldPos.y - transform.position.y, 0);
+
+                GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                newBullet.GetComponent<BulletMovement>().Direction = mousePosRelPlayer.normalized;
+                numberOfBullets--;
+                bullets.Add(newBullet);
             }
         }
     }

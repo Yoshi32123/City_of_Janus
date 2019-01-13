@@ -44,6 +44,10 @@ public class PlayerAttack : MonoBehaviour {
                 {
                     SneakAttack(enemyToAttack);
                 }
+                else
+                {
+                    GunAttack(enemyToAttack);
+                }
             }
         }
 
@@ -89,6 +93,6 @@ public class PlayerAttack : MonoBehaviour {
     /// <param name="target">The target to be attacked</param>
     public void GunAttack(GameObject target)
     {
-        gameObject.GetComponent<Gun>().FireGun(target);
+        gameObject.GetComponent<Gun>().FireGun();
     }
 }

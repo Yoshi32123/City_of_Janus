@@ -8,7 +8,8 @@ using UnityEngine;
 /// Author: Trenton Plager
 /// </summary>
 public class BulletMovement : MonoBehaviour {
-
+    
+    [SerializeField]
     private Vector3 direction;
     [SerializeField]
     private float speed;
