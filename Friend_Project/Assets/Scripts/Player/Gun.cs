@@ -43,7 +43,7 @@ public class Gun : MonoBehaviour {
         gun.transform.position = transform.position;
         gun.transform.rotation = FindGunPosition();
 
-        FireGun();
+        //FireGun();
 	}
 
     /// <summary>

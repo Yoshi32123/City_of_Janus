@@ -266,6 +266,20 @@ Prefab:
       propertyPath: maxSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 212442283597290826, guid: f1bf5edae202fd24fab925fd785437c5,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1421280979
+      objectReference: {fileID: 0}
+    - target: {fileID: 212442283597290826, guid: f1bf5edae202fd24fab925fd785437c5,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246415003978744, guid: f1bf5edae202fd24fab925fd785437c5, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1bf5edae202fd24fab925fd785437c5, type: 2}
   m_IsPrefabAsset: 0
@@ -1675,7 +1689,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4378514899646676, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114131885047362890, guid: 27aee6031bd9d424c9f816c7342c83a3,
         type: 2}
@@ -1697,11 +1711,6 @@ Prefab:
       propertyPath: patrolPath.Array.data[3]
       value: 
       objectReference: {fileID: 1289071900}
-    - target: {fileID: 114131885047362890, guid: 27aee6031bd9d424c9f816c7342c83a3,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1571925883}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
   m_IsPrefabAsset: 0
@@ -2086,6 +2095,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.22, y: 7.68}
   m_EdgeRadius: 0
+--- !u!1 &1208680418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1331597349676528, guid: 27aee6031bd9d424c9f816c7342c83a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1256597229}
+--- !u!114 &1208680422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208680418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb525404480884b4c9137f64dbfd4f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDetected: 0
 --- !u!1001 &1226394678
 Prefab:
   m_ObjectHideFlags: 0
@@ -2233,7 +2259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4378514899646676, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114131885047362890, guid: 27aee6031bd9d424c9f816c7342c83a3,
         type: 2}
@@ -2264,7 +2290,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1289071899
@@ -2337,7 +2364,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4378514899646676, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1263093108586526, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_Name
@@ -3621,7 +3648,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4378514899646676, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114131885047362890, guid: 27aee6031bd9d424c9f816c7342c83a3,
         type: 2}
@@ -3643,11 +3670,6 @@ Prefab:
       propertyPath: patrolPath.Array.data[3]
       value: 
       objectReference: {fileID: 426159187}
-    - target: {fileID: 114131885047362890, guid: 27aee6031bd9d424c9f816c7342c83a3,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1571925883}
     - target: {fileID: 1263093108586526, guid: 27aee6031bd9d424c9f816c7342c83a3, type: 2}
       propertyPath: m_Name
       value: tempGoblin (1)
@@ -3680,10 +3702,10 @@ Transform:
   m_LocalPosition: {x: -30.282469, y: 1.8825347, z: -0.3107577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 314359280}
   - {fileID: 806005706}
   - {fileID: 81448818}
   - {fileID: 226215566}
+  - {fileID: 314359280}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

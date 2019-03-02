@@ -31,8 +31,8 @@ public class EnemyMovement : MonoBehaviour {
     [SerializeField]
     private float detectionRadius;
 
-    [SerializeField]
-    private GameObject player;
+
+    protected GameObject player;
     [SerializeField]
     private float detectionSpeed;
 
@@ -48,9 +48,18 @@ public class EnemyMovement : MonoBehaviour {
     private Vector3 detectVectorRight;
     private Vector3 centerDetectionCone;
 
+
+    private ConeDetection DetectionCone;
+
+
     // Use this for initialization
     void Start()
     {
+
+        DetectionCone = GetComponentInChildren<ConeDetection>();
+
+
+        player = GameObject.Find("tempPlayer");
         normal = true;
         alerted = false;
         detected = false;
@@ -64,7 +73,7 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (!detected)
         {
@@ -73,7 +82,7 @@ public class EnemyMovement : MonoBehaviour {
         else
         {
             ApplyForce(Seek(player.transform.position));
-            Debug.Log(player.transform.position);
+            //Debug.Log(player.transform.position);
         }
         Move();
 
@@ -92,51 +101,53 @@ public class EnemyMovement : MonoBehaviour {
     /// CURRENT NOT FINISHED TEMP SOLUTION IMPLEMENTED
     /// </summary>
     /// <returns></returns>
-    private void PlayerInSight()
+    private bool PlayerInSight()
     {
-        //debug lines of the detection cone
-        //Debug.DrawLine(transform.position, new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius)); 
-        //Debug.DrawLine(transform.position, new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius));
+
+        return DetectionCone.playerDetected;
+        ////debug lines of the detection cone
+        ////Debug.DrawLine(transform.position, new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius)); 
+        ////Debug.DrawLine(transform.position, new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius));
 
 
-        Vector3 playerEnSpace = player.transform.position - transform.position;//convert the player's coordinates to this objects coordinates
+        //Vector3 playerEnSpace = player.transform.position - transform.position;//convert the player's coordinates to this objects coordinates
 
-        //detection vectors left and right are based on when the y value of both vectors is positive
-        //Vector3 detectVectorLeft = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
-        //Vector3 detectVectorRight = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
-
-
-
-        //rotate the detection vectors based on the direction of movement
+        ////detection vectors left and right are based on when the y value of both vectors is positive
+        ////Vector3 detectVectorLeft = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        ////Vector3 detectVectorRight = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
 
 
-        //centerDetectionCone = direction;
-        //Vector3 detectVectorLeft = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
-        //
-        //else
+
+        ////rotate the detection vectors based on the direction of movement
+
+
+        ////centerDetectionCone = direction;
+        ////Vector3 detectVectorLeft = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        ////
+        ////else
+        ////{
+        ////    Debug.Log("here");
+        ////}
+
+        //detectVectorLeft = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        //detectVectorRight = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
+        ////centerDetectionCone = transform.position + tran;
+
+
+
+        //Debug.DrawLine(transform.position,  detectVectorLeft);
+        //Debug.DrawLine(transform.position,  detectVectorRight);
+        //Debug.DrawLine(transform.position,  centerDetectionCone);
+
+
+
+        //if (playerEnSpace.y > 0 && // if the player is withing a 60 degree cone infront of the enemy they are detected
+        //    Mathf.Atan2(playerEnSpace.y, playerEnSpace.x) * Mathf.Rad2Deg > 60 &&
+        //    Mathf.Atan2(playerEnSpace.y, playerEnSpace.x) * Mathf.Rad2Deg < 120 &&
+        //    playerEnSpace.sqrMagnitude < Mathf.Pow(detectionRadius, 2))
         //{
-        //    Debug.Log("here");
+        //    detectionChance = 1;
         //}
-
-        detectVectorLeft = new Vector3(transform.position.x + Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
-        detectVectorRight = new Vector3(transform.position.x - Mathf.Cos(Mathf.PI / 3) * detectionRadius, transform.position.y + Mathf.Sin(Mathf.PI / 3) * detectionRadius);
-        //centerDetectionCone = transform.position + tran;
-
-
-
-        Debug.DrawLine(transform.position,  detectVectorLeft);
-        Debug.DrawLine(transform.position,  detectVectorRight);
-        Debug.DrawLine(transform.position,  centerDetectionCone);
-
-
-
-        if (playerEnSpace.y > 0 && // if the player is withing a 60 degree cone infront of the enemy they are detected
-            Mathf.Atan2(playerEnSpace.y, playerEnSpace.x) * Mathf.Rad2Deg > 60 &&
-            Mathf.Atan2(playerEnSpace.y, playerEnSpace.x) * Mathf.Rad2Deg < 120 &&
-            playerEnSpace.sqrMagnitude < Mathf.Pow(detectionRadius, 2))
-        {
-            detectionChance = 1;
-        }
 
     }
 
@@ -147,7 +158,10 @@ public class EnemyMovement : MonoBehaviour {
     /// <returns></returns>
     private void PlayerDetected()
     {
-        PlayerInSight();
+        if (PlayerInSight())
+        {
+            detectionChance = 1;
+        }
 
         if (detectionChance > 1)//limit detection chance to 100%
         {
@@ -200,7 +214,7 @@ public class EnemyMovement : MonoBehaviour {
 
             centerDetectionCone = Rotate(rotDegree, centerDetectionCone);
 
-            Debug.Log(centerDetectionCone);
+            //Debug.Log(centerDetectionCone);
             
         }
         else
