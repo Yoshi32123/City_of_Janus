@@ -24,7 +24,9 @@ public class SceneController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        playerStartPos = new Vector3(-15.2f, -11.8f, 0);
         enemies = new List<GameObject>();
+        player.transform.position = playerStartPos;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +37,7 @@ public class SceneController : MonoBehaviour {
 
     public void RespawnPlayer()
     {
-
+        player.transform.position = playerStartPos; 
     }
 
     public void RestartLevel()
