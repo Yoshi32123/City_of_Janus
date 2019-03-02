@@ -20,8 +20,6 @@ public class ConeMovement : MonoBehaviour {
 
     private void RotateCone()
     {
-        //Take enemy direction
-        //looking = GetComponentInParent<EnemyMovement>().direction;
 
 
         //Find rotation from x axis
