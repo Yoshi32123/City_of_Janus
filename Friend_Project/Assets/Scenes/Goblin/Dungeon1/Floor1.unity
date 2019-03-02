@@ -2806,6 +2806,7 @@ MonoBehaviour:
   - {fileID: 21300022, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
   counter: 0
   COUNTER_MAX: 5
+  prefix: mc
 --- !u!50 &1571925888
 Rigidbody2D:
   serializedVersion: 4

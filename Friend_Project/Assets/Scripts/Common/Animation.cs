@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Animation : MonoBehaviour {
 
+    #region Fields
     private DirectionFacing direction;
-    public DirectionFacing prevDirection;
+    private DirectionFacing prevDirection;
     [SerializeField]
     private Sprite currentSprite;
     [SerializeField]
@@ -17,7 +18,11 @@ public class Animation : MonoBehaviour {
     private int COUNTER_MAX;
     private bool isMoving; 
     private int spriteIndex;
+    [SerializeField]
+    private string prefix;
+    #endregion
 
+    #region Properties
     public int Counter
     {
         get { return counter; }
@@ -30,14 +35,21 @@ public class Animation : MonoBehaviour {
         set { direction = value; }
     }
 
+    public DirectionFacing PrevDirection
+    {
+        get { return prevDirection; }
+        set { prevDirection = value; }
+    }
+
     public bool IsMoving
     {
         get { return isMoving; }
         set { isMoving = value; }
     }
+    #endregion
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         isMoving = false; 
         direction = DirectionFacing.Front;
         currentSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
@@ -65,24 +77,6 @@ public class Animation : MonoBehaviour {
             newDirection = true;
         }
 
-        //switch (direction)
-        //{
-        //    case DirectionFacing.Back:
-        //        IncrementSprite(newDirection);
-        //        break;
-        //    case DirectionFacing.Front:
-        //        IncrementSprite(newDirection);
-        //        break;
-        //    case DirectionFacing.Left:
-        //        IncrementSprite(newDirection);
-        //        break;
-        //    case DirectionFacing.Right:
-        //        IncrementSprite(newDirection);
-        //        break;
-        //    default:
-        //        break;
-        //}
-
         IncrementSprite(newDirection);
 
         isMoving = false;
@@ -92,11 +86,16 @@ public class Animation : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().sprite = currentSprite;
 	}
 
+    /// <summary>
+    /// Helper method to assist with incremementing the sprite
+    /// without cluttering the Update method
+    /// </summary>
+    /// <param name="newDirection">A boolean indicating whether there is a different direction from the previous direction</param>
     private void IncrementSprite(bool newDirection)
     {
         if (newDirection)
         {
-            allSprites.TryGetValue("mc_" + direction.ToString().ToLower().Substring(0, 2) + "_0", out currentSprite);
+            allSprites.TryGetValue(prefix + "_" + direction.ToString().ToLower().Substring(0, 2) + "_0", out currentSprite);
             return;
         }
         if (counter >= COUNTER_MAX)

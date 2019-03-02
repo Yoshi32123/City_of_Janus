@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour {
     void ApplyMovementForces()
     {
         direction = new Vector3(0, 0);
-        playerAnimation.prevDirection = playerAnimation.Direction;
+        playerAnimation.PrevDirection = playerAnimation.Direction;
         if (Input.GetKey(KeyCode.W))
         {
             playerAnimation.Direction = DirectionFacing.Back;

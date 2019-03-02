@@ -51,6 +51,8 @@ public class EnemyMovement : MonoBehaviour {
 
     private ConeDetection DetectionCone;
 
+    private Animation enemyAnimation; 
+
 
     // Use this for initialization
     void Start()
@@ -70,6 +72,8 @@ public class EnemyMovement : MonoBehaviour {
 
 
         currentPatrolNode = 0;
+
+        enemyAnimation = gameObject.GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -206,6 +210,27 @@ public class EnemyMovement : MonoBehaviour {
         {
             Vector3 directionToPoint = new Vector3(patrolPath[currentPatrolNode].position.x - transform.position.x, patrolPath[currentPatrolNode].position.y - transform.position.y, 0);
 
+            Vector3 normalizedDirection = directionToPoint.normalized;
+
+            enemyAnimation.PrevDirection = enemyAnimation.Direction;
+
+            if (Mathf.Abs(normalizedDirection.x) > Mathf.Abs(normalizedDirection.y))
+            {
+                enemyAnimation.Direction = DirectionFacing.Right; 
+                if (normalizedDirection.x < 0)
+                {
+                    enemyAnimation.Direction = DirectionFacing.Left;
+                }
+            }
+            else
+            {
+                enemyAnimation.Direction = DirectionFacing.Back; 
+                if (normalizedDirection.y < 0)
+                {
+                    enemyAnimation.Direction = DirectionFacing.Front;
+                }
+            }
+
             ApplyForce(directionToPoint);
 
             float rotDegree = Mathf.Atan2(directionToPoint.y, directionToPoint.x);
@@ -238,6 +263,7 @@ public class EnemyMovement : MonoBehaviour {
     private void ApplyForce(Vector3 force)
     {
         acceleration += force / mass;
+        enemyAnimation.IsMoving = true;
     }
 
     /// <summary>
