@@ -30,6 +30,7 @@ public class Gun : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        bullets = new List<GameObject>();
         gun = Instantiate(gun,
             new Vector3(transform.position.x, transform.position.y, transform.position.z), 
             FindGunPosition());
@@ -43,7 +44,7 @@ public class Gun : MonoBehaviour {
         gun.transform.position = transform.position;
         gun.transform.rotation = FindGunPosition();
 
-        //FireGun();
+        FireGun();
 	}
 
     /// <summary>
