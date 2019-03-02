@@ -2,18 +2,18 @@ fileFormatVersion: 2
 guid: e9edd74937a8b664a82586f690b051fb
 TextureImporter:
   fileIDToRecycleName:
-    21300000: mc_0
-    21300002: mc_1
-    21300004: mc_2
-    21300006: mc_4
-    21300008: mc_5
-    21300010: mc_6
-    21300012: mc_8
-    21300014: mc_9
-    21300016: mc_10
-    21300018: mc_12
-    21300020: mc_13
-    21300022: mc_14
+    21300000: mc_fr_0
+    21300002: mc_fr_1
+    21300004: mc_fr_2
+    21300006: mc_le_0
+    21300008: mc_le_1
+    21300010: mc_le_2
+    21300012: mc_ba_0
+    21300014: mc_ba_1
+    21300016: mc_ba_2
+    21300018: mc_ri_0
+    21300020: mc_ri_1
+    21300022: mc_ri_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -96,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mc_0
+      name: mc_fr_0
       rect:
         serializedVersion: 2
         x: 29
@@ -104,7 +104,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -116,7 +116,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_1
+      name: mc_fr_1
       rect:
         serializedVersion: 2
         x: 223
@@ -124,7 +124,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -136,7 +136,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_2
+      name: mc_fr_2
       rect:
         serializedVersion: 2
         x: 415
@@ -144,7 +144,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,7 +156,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_4
+      name: mc_le_0
       rect:
         serializedVersion: 2
         x: 29
@@ -164,7 +164,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_5
+      name: mc_le_1
       rect:
         serializedVersion: 2
         x: 223
@@ -184,7 +184,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,7 +196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_6
+      name: mc_le_2
       rect:
         serializedVersion: 2
         x: 415
@@ -204,7 +204,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -216,7 +216,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_8
+      name: mc_ba_0
       rect:
         serializedVersion: 2
         x: 29
@@ -224,7 +224,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_9
+      name: mc_ba_1
       rect:
         serializedVersion: 2
         x: 223
@@ -244,7 +244,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -256,7 +256,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_10
+      name: mc_ba_2
       rect:
         serializedVersion: 2
         x: 415
@@ -264,7 +264,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_12
+      name: mc_ri_0
       rect:
         serializedVersion: 2
         x: 30
@@ -284,7 +284,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,15 +296,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_13
+      name: mc_ri_1
       rect:
         serializedVersion: 2
-        x: 223
+        x: 226
         y: 0
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,7 +316,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_14
+      name: mc_ri_2
       rect:
         serializedVersion: 2
         x: 415
@@ -324,7 +324,7 @@ TextureImporter:
         width: 138
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

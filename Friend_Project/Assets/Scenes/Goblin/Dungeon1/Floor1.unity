@@ -299,6 +299,10 @@ Prefab:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1246415003978744, guid: f1bf5edae202fd24fab925fd785437c5, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1bf5edae202fd24fab925fd785437c5, type: 2}
   m_IsPrefabAsset: 0
@@ -532,7 +536,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 278976554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.2, y: -11.8, z: -10}
+  m_LocalPosition: {x: -15.200001, y: -11.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2088276003}
@@ -1943,7 +1947,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1089501718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.2, y: -11.8, z: -10}
+  m_LocalPosition: {x: -15.200001, y: -11.8, z: -10}
   m_LocalScale: {x: 1.026349, y: 1.026349, z: 1.026349}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2774,6 +2778,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4070110424118166, guid: f1bf5edae202fd24fab925fd785437c5,
     type: 2}
   m_PrefabInternal: {fileID: 179886553}
+--- !u!114 &1571925886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1571925883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cbd876a7cba824287ec5eb89266ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prevDirection: 0
+  currentSprite: {fileID: 0}
+  allSpritesReference:
+  - {fileID: 21300012, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300014, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300016, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300000, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300002, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300004, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300006, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300008, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300010, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300018, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300020, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  - {fileID: 21300022, guid: e9edd74937a8b664a82586f690b051fb, type: 3}
+  counter: 0
+  COUNTER_MAX: 5
 --- !u!50 &1571925888
 Rigidbody2D:
   serializedVersion: 4

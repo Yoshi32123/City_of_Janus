@@ -10,7 +10,7 @@ public class ConeDetection : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.Find("tempPlayer");
+        player = GameObject.Find("Player");
         pivotPoint = transform.parent;
 
 	}

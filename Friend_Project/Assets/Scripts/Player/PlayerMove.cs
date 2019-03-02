@@ -20,10 +20,12 @@ public class PlayerMove : MonoBehaviour {
     public Vector3 velocity = new Vector3(0, 0, 0);
     public Vector3 acceleration = new Vector3(0, 0, 0);
 
+    private Animation playerAnimation; 
+
 
     // Use this for initialization
     void Start () {
-		
+        playerAnimation = gameObject.GetComponent<Animation>(); 
 	}
 	
 	// Update is called once per frame
@@ -38,20 +40,25 @@ public class PlayerMove : MonoBehaviour {
     void ApplyMovementForces()
     {
         direction = new Vector3(0, 0);
+        playerAnimation.prevDirection = playerAnimation.Direction;
         if (Input.GetKey(KeyCode.W))
         {
+            playerAnimation.Direction = DirectionFacing.Back;
             ApplyForce(new Vector3(0, speed));
         }
         if (Input.GetKey(KeyCode.S))
         {
+            playerAnimation.Direction = DirectionFacing.Front;
             ApplyForce(new Vector3(0, -speed));
         }
         if (Input.GetKey(KeyCode.D))
         {
+            playerAnimation.Direction = DirectionFacing.Right;
             ApplyForce(new Vector3(speed, 0));
         }
         if (Input.GetKey(KeyCode.A))
         {
+            playerAnimation.Direction = DirectionFacing.Left;
             ApplyForce(new Vector3(-speed, 0));
         }
 
@@ -69,6 +76,7 @@ public class PlayerMove : MonoBehaviour {
     private void ApplyForce(Vector3 force)
     {
         acceleration += force / mass;
+        playerAnimation.IsMoving = true;
     }
 
     /// <summary>

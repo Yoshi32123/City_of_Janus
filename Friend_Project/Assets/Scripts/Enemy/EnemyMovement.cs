@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour {
         DetectionCone = GetComponentInChildren<ConeDetection>();
 
 
-        player = GameObject.Find("tempPlayer");
+        player = GameObject.Find("Player");
         normal = true;
         alerted = false;
         detected = false;
