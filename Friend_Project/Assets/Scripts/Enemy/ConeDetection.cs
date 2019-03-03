@@ -23,14 +23,21 @@ public class ConeDetection : MonoBehaviour {
         
     }
 
+
+    /// <summary>
+    /// when a collider enters the detection cone this method occurs
+    /// 1. checks that the collider that entered was the palyer
+    /// 2. Raycasts to check that the player doesnt have a obstacle blocking the enemy's los
+    /// </summary>
+    /// <param name="collider"></param>
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.DrawLine(pivotPoint.position, (player.transform.position - pivotPoint.position) * 10, Color.red);
         
         if(collider.gameObject != player)
         {
             return;
         }
+        //Debug.DrawLine(pivotPoint.position, (player.transform.position - pivotPoint.position) * 10, Color.red, .5f);
 
         RaycastHit2D raycastInfo = Physics2D.Raycast(pivotPoint.position, (player.transform.position - pivotPoint.position), coneLen);
         Debug.Log(raycastInfo.collider.gameObject);

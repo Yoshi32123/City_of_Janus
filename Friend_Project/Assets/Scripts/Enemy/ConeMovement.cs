@@ -18,6 +18,9 @@ public class ConeMovement : MonoBehaviour {
         RotateCone();
 	}
 
+    /// <summary>
+    /// rotates cone to direction the parent looking
+    /// </summary>
     private void RotateCone()
     {
 
