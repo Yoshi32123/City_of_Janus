@@ -46,7 +46,7 @@ public class Sceneloader : MonoBehaviour {
 
         if (playerChoice)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
                 SceneManager.LoadScene(nextScene);
             }
