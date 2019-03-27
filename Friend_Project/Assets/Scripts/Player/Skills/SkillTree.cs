@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillTree{
 
+    private SkillNode root;
+
     public SkillTree()
     {
-        
     }
-
-    private SkillNode root;
 
     public void LearnSkill(SkillNode currentNode, int key)
     {
@@ -37,10 +37,10 @@ public class SkillTree{
 
     }
 
-    public void CreateSkill(string name, Skill skill, int key)
+    public void CreateSkill(string name, Skill skill, int key, Button skillButton)
     {
         SkillNode newNode = new SkillNode();
-        newNode.Create(name, skill, key);
+        newNode.Create(name, skill, key, skillButton);
 
 
         AddSkill(root, newNode);

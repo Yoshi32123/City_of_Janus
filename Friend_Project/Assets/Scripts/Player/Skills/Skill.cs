@@ -16,6 +16,7 @@ public class Skill {
         this.cost = cost; 
     }
 
+
     public virtual void Effect() { }
 
 
