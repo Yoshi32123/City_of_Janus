@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillNode : MonoBehaviour {
+public class SkillNode {
 
     public Node Data;
-    private void Start()
+    
+    public SkillNode()
     {
-        
+        Data = new Node();
+
     }
+    
 
     public void Create(string name, Skill skill, int key)
     {

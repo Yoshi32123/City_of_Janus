@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTree : MonoBehaviour{
+public class SkillTree{
 
-    public void Start()
+    public SkillTree()
     {
         
     }
@@ -50,7 +50,7 @@ public class SkillTree : MonoBehaviour{
     private void AddSkill(SkillNode root, SkillNode addition)
     {
         //base case
-        if (root.Data.Skill == null)
+        if (root == null)
         {
             root = addition;
             return;
